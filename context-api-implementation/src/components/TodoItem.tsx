@@ -1,4 +1,4 @@
-import { useContext, useId, useState } from "react"
+import { useContext, useEffect, useId, useRef, useState } from "react"
 import type { Todo, TodoContextType } from "../types"
 import TodoContext from "../contexts/TodoContext"
 
@@ -10,16 +10,32 @@ export default function TodoItem({ id, text, completed }: Todo) {
   const [editing, setEditing] = useState<boolean>(false)
   const [newText, setNewText] = useState<string>(text)
 
+  const inputRef = useRef(null)
+  useEffect(() => {
+    if (inputRef.current) (inputRef.current as HTMLInputElement).focus()
+  }, [editing])
+
   const todoEditable = editing ? (
-    <div className="form-control">
+    <div className="w-100">
       <input
+        ref={inputRef}
         type="text"
+        className="form-control border-0 p-1"
         id={`list-item-input-${htmlId}`}
-        onChange={(e) => setNewText(e.target.value)}
+        onChange={(e) => {
+          setNewText(e.target.value !== "" ? e.target.value : newText)
+        }}
         value={newText}
         onBlur={() => {
           setEditing(false)
           editTodo(id, newText)
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === "Tab") {
+            e.preventDefault()
+            setEditing(false)
+            editTodo(id, newText)
+          }
         }}
       />
     </div>
