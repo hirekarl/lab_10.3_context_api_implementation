@@ -3,6 +3,7 @@ export default function Todo() {
     <li className="list-group-item">
       <div className="d-flex justify-content-between align-items-center">
         <div className="form-check form-check-inline">
+          {/* Look into using useId for these. */}
           <input type="checkbox" id="list-item-checkbox" className="form-check-input" />
           <label htmlFor="list-item-checkbox" className="form-check-label">List Item 1</label>
         </div>
