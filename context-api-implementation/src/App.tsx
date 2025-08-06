@@ -2,7 +2,7 @@ import "./App.css"
 
 import Header from "./components/Header"
 import TodoInput from "./components/TodoInput"
-import TodoFilters from "./components/TodoFilters"
+import FilterButtons from "./components/FilterButtons"
 import TodoList from "./components/TodoList"
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           <Header />
           <hr />
           <TodoInput />
-          <TodoFilters />
+          <FilterButtons />
           <TodoList />
         </div>
       </div>
