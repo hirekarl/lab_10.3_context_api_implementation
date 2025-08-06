@@ -1,4 +1,4 @@
-export default function Todo() {
+export default function TodoItem() {
   return (
     <li className="list-group-item">
       <div className="d-flex justify-content-between align-items-center">

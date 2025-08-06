@@ -1,10 +1,10 @@
-import Todo from "./Todo"
+import TodoItem from "./TodoItem"
 
 export default function TodoList() {
   return (
     <div>
       <ul className="list-group">
-        <Todo />
+        <TodoItem />
       </ul>
       <hr />
       <div>
