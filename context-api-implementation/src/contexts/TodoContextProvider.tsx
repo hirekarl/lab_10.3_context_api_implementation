@@ -1,5 +1,7 @@
-import { useState, type ReactNode } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import type { Todo, TodoID } from "../types"
+
+import { getTodosFromLocalStorage, saveTodosToLocalStorage } from "../utils"
 
 import TodoContext from "./TodoContext"
 
@@ -8,7 +10,11 @@ export default function TodoContextProvider({
 }: {
   children: ReactNode
 }) {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>(getTodosFromLocalStorage() || [])
+
+  useEffect(() => {
+    saveTodosToLocalStorage(todos)
+  }, [todos])
 
   const addTodo = (text: string): void => {
     const id: TodoID = window.crypto.randomUUID()

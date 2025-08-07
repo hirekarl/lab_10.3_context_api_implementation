@@ -1,14 +1,22 @@
-import { useState, type ReactNode } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import type { Filter } from "../types"
 
 import FilterContext from "./FilterContext"
+
+import { getFilterFromLocalStorage, saveFilterToLocalStorage } from "../utils"
 
 export default function FilterContextProvider({
   children,
 }: {
   children: ReactNode
 }) {
-  const [filter, setFilter] = useState<Filter>("all")
+  const [filter, setFilter] = useState<Filter>(
+    getFilterFromLocalStorage() || "all"
+  )
+
+  useEffect(() => {
+    saveFilterToLocalStorage(filter)
+  }, [filter])
 
   return (
     <FilterContext.Provider value={{ filter, setFilter }}>
