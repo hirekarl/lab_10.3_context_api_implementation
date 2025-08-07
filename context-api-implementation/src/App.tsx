@@ -22,6 +22,7 @@ const App = () => {
             <TodoInput />
             <FilterContextProvider>
               <FilterButtons />
+              <hr />
               <TodoList />
             </FilterContextProvider>
           </TodoContextProvider>

@@ -18,7 +18,7 @@ const FilterButtons = () => {
       <div className="btn-group w-100" role="group" aria-label="Filter todos.">
         <button
           type="button"
-          className={`btn btn-primary ${filter === "all" ? "active" : null}`}
+          className={`btn btn-sm btn-primary ${filter === "all" ? "active" : null}`}
           value="all"
           onClick={() => handleFilterChange("all")}>
           All
@@ -26,7 +26,7 @@ const FilterButtons = () => {
 
         <button
           type="button"
-          className={`btn btn-primary ${filter === "active" ? "active" : null}`}
+          className={`btn btn-sm btn-primary ${filter === "active" ? "active" : null}`}
           value="active"
           onClick={() => handleFilterChange("active")}>
           Active
@@ -34,7 +34,7 @@ const FilterButtons = () => {
 
         <button
           type="button"
-          className={`btn btn-primary ${
+          className={`btn btn-sm btn-primary ${
             filter === "completed" ? "active" : null
           }`}
           value="completed"

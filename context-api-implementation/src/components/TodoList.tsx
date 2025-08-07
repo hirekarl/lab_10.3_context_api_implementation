@@ -3,6 +3,7 @@ import TodoItem from "./TodoItem"
 import TodoContext from "../contexts/TodoContext"
 import FilterContext from "../contexts/FilterContext"
 import type { FilterContextType, TodoContextType, Todo } from "../types"
+import { BOOTSTRAP_ICON } from "../constants"
 
 const TodoList = () => {
   const { todos, clearCompleted } = useContext<TodoContextType>(TodoContext)
@@ -44,7 +45,7 @@ const TodoList = () => {
           onClick={() => {
             if (clearCompleted) clearCompleted()
           }}>
-          Clear completed todos
+          <i className={BOOTSTRAP_ICON.trash}></i>&nbsp; Clear Completed Todos
         </button>
       </div>
       <div>
