@@ -8,7 +8,7 @@ export default function ToggleThemeButton() {
   return (
     <button
       type="button"
-      className="btn btn-outline-secondary"
+      className={`btn btn-outline-${theme === "dark" ? "warning" : "dark"}`}
       onClick={toggleTheme}>
       <i className={`bi bi-${theme === "dark" ? "sun-fill" : "moon-fill"}`}></i>
       &nbsp;
