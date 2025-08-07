@@ -41,7 +41,7 @@ const TodoList = () => {
       <hr />
       <div>
         <strong>{activeTodosCount}</strong> item
-        {activeTodosCount === 0 || activeTodosCount > 1 ? "s" : ""} left
+        {activeTodosCount === 0 || activeTodosCount > 1 ? "s" : null} left
       </div>
     </div>
   )
