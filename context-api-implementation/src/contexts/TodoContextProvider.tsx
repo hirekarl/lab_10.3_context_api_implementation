@@ -18,7 +18,7 @@ const TodoContextProvider = ({ children }: { children: ReactNode }) => {
 
     const newTodo: Todo = {
       id,
-      text,
+      text: text.trim(),
       completed,
     }
     setTodos((prevTodos) => [newTodo, ...prevTodos])
