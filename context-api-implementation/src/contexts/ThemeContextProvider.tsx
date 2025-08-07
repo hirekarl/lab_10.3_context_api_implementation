@@ -3,12 +3,16 @@ import type { Theme } from "../types"
 
 import ThemeContext from "./ThemeContext"
 
+import { getThemeFromLocalStorage, saveThemeToLocalStorage } from "../utils"
+
 export default function ThemeContextProvider({
   children,
 }: {
   children: ReactNode
 }) {
-  const [theme, setTheme] = useState<Theme>("dark")
+  const [theme, setTheme] = useState<Theme>(
+    getThemeFromLocalStorage() || "dark"
+  )
 
   const toggleTheme = (): void => {
     setTheme(theme === "dark" ? "light" : "dark")
@@ -16,6 +20,7 @@ export default function ThemeContextProvider({
 
   useEffect(() => {
     document.documentElement.dataset.bsTheme = theme
+    saveThemeToLocalStorage(theme)
   }, [theme])
 
   return (
