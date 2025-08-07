@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react"
+import { useCallback, useEffect, useState, type ReactNode } from "react"
 import type { Theme } from "../types"
 
 import ThemeContext from "./ThemeContext"
@@ -14,9 +14,9 @@ export default function ThemeContextProvider({
     getThemeFromLocalStorage() || "dark"
   )
 
-  const toggleTheme = (): void => {
+  const toggleTheme = useCallback((): void => {
     setTheme(theme === "dark" ? "light" : "dark")
-  }
+  }, [theme])
 
   useEffect(() => {
     document.documentElement.dataset.bsTheme = theme

@@ -1,4 +1,9 @@
-import { useEffect, useState, type ReactNode } from "react"
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react"
 import type { Todo, TodoID } from "../types"
 
 import { getTodosFromLocalStorage, saveTodosToLocalStorage } from "../utils"
@@ -16,7 +21,7 @@ export default function TodoContextProvider({
     saveTodosToLocalStorage(todos)
   }, [todos])
 
-  const addTodo = (text: string): void => {
+  const addTodo = useCallback((text: string): void => {
     const id: TodoID = window.crypto.randomUUID()
     const completed: boolean = false
 
@@ -26,54 +31,67 @@ export default function TodoContextProvider({
       completed,
     }
     setTodos((prevTodos) => [newTodo, ...prevTodos])
-  }
+  }, [])
 
-  const getTodoById = (id: TodoID): Todo | null => {
-    const todo = todos.find((t) => t.id === id)
-    if (todo) {
-      return todo
-    }
-    return null
-  }
-
-  const toggleTodo = (id: TodoID): void => {
-    const todo = getTodoById(id)
-
-    if (todo) {
-      const todoIndex = todos.indexOf(todo)
-      const newTodo = {
-        ...todo,
-        completed: !todo.completed,
+  const getTodoById = useCallback(
+    (id: TodoID): Todo | null => {
+      const todo = todos.find((t) => t.id === id)
+      if (todo) {
+        return todo
       }
-      setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1, newTodo))
-    }
-  }
+      return null
+    },
+    [todos]
+  )
 
-  const deleteTodo = (id: TodoID): void => {
-    const todo = getTodoById(id)
+  const toggleTodo = useCallback(
+    (id: TodoID): void => {
+      const todo = getTodoById(id)
 
-    if (todo) {
-      const todoIndex = todos.indexOf(todo)
-      setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1))
-    }
-  }
-
-  const editTodo = (id: TodoID, newText: string): void => {
-    const todo = getTodoById(id)
-
-    if (todo) {
-      const todoIndex = todos.indexOf(todo)
-      const newTodo = {
-        ...todo,
-        text: newText,
+      if (todo) {
+        const todoIndex = todos.indexOf(todo)
+        const newTodo = {
+          ...todo,
+          completed: !todo.completed,
+        }
+        setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1, newTodo))
       }
-      setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1, newTodo))
-    }
-  }
+    },
+    [getTodoById, todos]
+  )
 
-  const clearCompleted = (): void => {
+  const deleteTodo = useCallback(
+    (id: TodoID): void => {
+      const todo = getTodoById(id)
+
+      if (todo) {
+        const todoIndex = todos.indexOf(todo)
+        setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1))
+      }
+    },
+    [getTodoById, todos]
+  )
+
+  const editTodo = useCallback(
+    (id: TodoID, newText: string): void => {
+      const todo = getTodoById(id)
+
+      if (todo) {
+        const todoIndex = todos.indexOf(todo)
+        const newTodo = {
+          ...todo,
+          text: newText,
+        }
+        setTodos((prevTodos) => prevTodos.toSpliced(todoIndex, 1, newTodo))
+      }
+    },
+    [getTodoById, todos]
+  )
+
+  const clearCompleted = useCallback((): void => {
     setTodos((prevTodos) => prevTodos.filter((t) => !t.completed))
-  }
+  }, [])
+
   return (
     <TodoContext.Provider
       value={{
