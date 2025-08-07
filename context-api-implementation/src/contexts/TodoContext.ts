@@ -1,7 +1,7 @@
-import React from "react"
+import { createContext } from "react"
 import type { TodoContextType } from "../types"
 
-const TodoContext = React.createContext<TodoContextType>({
+const TodoContext = createContext<TodoContextType>({
   todos: [],
   addTodo: () => {},
   toggleTodo: () => {},

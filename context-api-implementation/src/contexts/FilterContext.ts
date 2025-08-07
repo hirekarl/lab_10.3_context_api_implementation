@@ -1,6 +1,6 @@
-import React from "react"
+import { createContext } from "react"
 import type { Filter } from "../types"
 
-const FilterContext = React.createContext<Filter>("all")
+const FilterContext = createContext<Filter>("all")
 
 export default FilterContext

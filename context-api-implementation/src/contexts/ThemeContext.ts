@@ -1,7 +1,7 @@
-import React from "react"
+import { createContext } from "react"
 import type { ThemeContextType } from "../types"
 
-const ThemeContext = React.createContext<ThemeContextType>({
+const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},
 })
