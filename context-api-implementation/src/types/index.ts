@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react"
+
 export type TodoID = string | number
 
 export interface Todo {
@@ -23,3 +25,8 @@ export interface ThemeContextType {
 }
 
 export type Filter = "all" | "active" | "completed"
+
+export interface FilterContextType {
+  filter: Filter
+  setFilter: Dispatch<SetStateAction<Filter>> | null
+}

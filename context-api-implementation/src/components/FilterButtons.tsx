@@ -1,39 +1,49 @@
+import { useContext } from "react"
+
+import type { Filter, FilterContextType } from "../types"
+
+import FilterContext from "../contexts/FilterContext"
+
 export default function FilterButtons() {
+  const { filter, setFilter } = useContext<FilterContextType>(FilterContext)
+
+  function handleFilterChange(newFilter: Filter): void {
+    if (setFilter) {
+      setFilter(newFilter)
+    }
+  }
+
   return (
     <div className="d-flex justify-content-around">
       <div
         className="btn-group mb-3 w-100"
         role="group"
         aria-label="Filter todos.">
-        <input
-          type="radio"
-          name="filters"
-          className="btn-check"
-          id="all-filter-radio"
-        />
-        <label className="btn btn-primary" htmlFor="all-filter-radio">
+        <button
+          type="button"
+          className={`btn btn-primary ${filter === "all" ? "active" : ""}`}
+          value="all"
+          onClick={() => handleFilterChange("all")}>
           All
-        </label>
+        </button>
 
-        <input
-          type="radio"
-          name="filters"
-          className="btn-check"
-          id="active-filter-radio"
-        />
-        <label className="btn btn-primary" htmlFor="active-filter-radio">
+        <button
+          type="button"
+          className={`btn btn-primary ${filter === "active" ? "active" : ""}`}
+          value="active"
+          onClick={() => handleFilterChange("active")}>
           Active
-        </label>
+        </button>
 
-        <input
-          type="radio"
-          name="filters"
-          className="btn-check"
-          id="completed-filter-radio"
-        />
-        <label className="btn btn-primary" htmlFor="completed-filter-radio">
+        <button
+          type="button"
+          className={`btn btn-primary ${
+            filter === "completed" ? "active" : ""
+          }`}
+          value="completed"
+          onClick={() => handleFilterChange("completed")}>
           Completed
-        </label>
+        </button>
       </div>
     </div>
   )
