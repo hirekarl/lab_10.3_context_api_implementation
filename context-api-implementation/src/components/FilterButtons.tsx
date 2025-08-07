@@ -14,7 +14,7 @@ export default function FilterButtons() {
   }
 
   return (
-    <div className="d-flex justify-content-around">
+    <div className="d-flex justify-content-around mb-3">
       <div
         className="btn-group w-100"
         role="group"

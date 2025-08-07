@@ -59,12 +59,12 @@ export default function TodoItem({ id, text, completed }: Todo) {
         <button
           className="btn btn-sm btn-warning"
           onClick={() => setEditing(true)}>
-          <i className="bi bi-pencil-square"></i>
+          <i className="bi bi-pencil-square"></i> Edit
         </button>
         <button
           className="btn btn-sm btn-danger"
           onClick={() => deleteTodo(id)}>
-          <i className="bi bi-trash"></i>
+          <i className="bi bi-trash"></i> Delete
         </button>
       </div>
     </>
