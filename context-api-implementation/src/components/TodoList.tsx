@@ -5,7 +5,7 @@ import FilterContext from "../contexts/FilterContext"
 import type { FilterContextType, TodoContextType, Todo } from "../types"
 
 const TodoList = () => {
-  const { todos } = useContext<TodoContextType>(TodoContext)
+  const { todos, clearCompleted } = useContext<TodoContextType>(TodoContext)
   const { filter } = useContext<FilterContextType>(FilterContext)
 
   let filteredTodos: Todo[]
@@ -36,22 +36,34 @@ const TodoList = () => {
   )
 
   return (
-    <div>
-      <ul className="list-group">
-        {filteredTodoItems.length > 0 ? (
-          filteredTodoItems
-        ) : (
-          <p className="text-center mt-3">
-            <em>No {filter !== "all" ? filter : null} todos yet.</em>
-          </p>
-        )}
-      </ul>
-      <hr />
-      <div>
-        <strong>{activeTodosCount}</strong> item
-        {activeTodosCount === 0 || activeTodosCount > 1 ? "s" : null} left
+    <>
+      <div className="mb-3">
+        <button
+          type="button"
+          className="btn btn-sm btn-danger w-100"
+          onClick={() => {
+            if (clearCompleted) clearCompleted()
+          }}>
+          Clear completed todos
+        </button>
       </div>
-    </div>
+      <div>
+        <ul className="list-group">
+          {filteredTodoItems.length > 0 ? (
+            filteredTodoItems
+          ) : (
+            <p className="text-center mt-3">
+              <em>No {filter !== "all" ? filter : null} todos yet.</em>
+            </p>
+          )}
+        </ul>
+        <hr />
+        <div>
+          <strong>{activeTodosCount}</strong> item
+          {activeTodosCount === 0 || activeTodosCount > 1 ? "s" : null} left
+        </div>
+      </div>
+    </>
   )
 }
 
