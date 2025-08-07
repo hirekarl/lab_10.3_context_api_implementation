@@ -20,7 +20,7 @@ cd context-api-implementation && npm i && npm run dev
 Top-level application behavior can be found in [`./context-api-implementation/src/App.tsx`](./context-api-implementation/src/App.tsx).
 
 ### Reflection
-During our activity time on Wednesday, Hassan suggested implementing a ContextProvider design pattern that wraps each Context's Provider in a functional component that encapsulates the logic of each Context. I found this really cleaned up my `App.tsx`. I'm still wrapping my head around use cases for `useCallback` and `useMemo`&mdash;if I have time after class today to dig deeper, I will work on implementing memoization throughout the app.
+During our activity time on Wednesday, Hassan suggested implementing a ContextProvider design pattern that wraps each Context's Provider in a functional component that encapsulates the logic of each Context. I found this really cleaned up my `App.tsx`. I'm not 100% sure my usages of `useCallback` and `useMemo` are correct&mdash;I'd love feedback if there are improvements I can make! I may come back and implement `useReducer` for the `TodoContextProvider` tonight.
 
 ## Assignment
 You are tasked with building a functional Todo application. Instead of relying on prop drilling or a complex third-party state management library for this scale, you will leverage React’s Context API to manage various aspects of the application’s state. This includes managing the list of todos, current visibility filters, and a simple theme.
