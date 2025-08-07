@@ -9,8 +9,11 @@ export default function TodoInput() {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true)
 
   function handleAddTodo(): void {
-    addTodo(todoText)
-    setTodoText("")
+    if (todoText !== "") {
+      addTodo(todoText)
+      setTodoText("")
+      setButtonDisabled(true)
+    }
   }
 
   return (
