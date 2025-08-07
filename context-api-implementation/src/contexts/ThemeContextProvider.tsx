@@ -5,11 +5,7 @@ import ThemeContext from "./ThemeContext"
 
 import { getThemeFromLocalStorage, saveThemeToLocalStorage } from "../utils"
 
-export default function ThemeContextProvider({
-  children,
-}: {
-  children: ReactNode
-}) {
+const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(
     getThemeFromLocalStorage() || "dark"
   )
@@ -29,3 +25,5 @@ export default function ThemeContextProvider({
     </ThemeContext.Provider>
   )
 }
+
+export default ThemeContextProvider

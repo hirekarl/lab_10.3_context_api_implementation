@@ -3,7 +3,7 @@ import type { Todo, TodoContextType } from "../types"
 import TodoContext from "../contexts/TodoContext"
 import { BOOTSTRAP_ICON } from "../constants"
 
-export default function TodoItem({ id, text, completed }: Todo) {
+const TodoItem = ({ id, text, completed }: Todo) => {
   const htmlId = useId()
   const { toggleTodo, deleteTodo, editTodo } =
     useContext<TodoContextType>(TodoContext)
@@ -52,7 +52,9 @@ export default function TodoItem({ id, text, completed }: Todo) {
           id={`list-item-checkbox-${htmlId}`}
           className="form-check-input"
           checked={completed}
-          onChange={() => {if (toggleTodo) toggleTodo(id)}}
+          onChange={() => {
+            if (toggleTodo) toggleTodo(id)
+          }}
         />
         <label
           htmlFor={`list-item-checkbox-${htmlId}`}
@@ -68,7 +70,9 @@ export default function TodoItem({ id, text, completed }: Todo) {
         </button>
         <button
           className="btn btn-sm btn-danger"
-          onClick={() => {if (deleteTodo) deleteTodo(id)}}>
+          onClick={() => {
+            if (deleteTodo) deleteTodo(id)
+          }}>
           <i className={BOOTSTRAP_ICON.trash}></i> Delete
         </button>
       </div>
@@ -83,3 +87,5 @@ export default function TodoItem({ id, text, completed }: Todo) {
     </li>
   )
 }
+
+export default TodoItem

@@ -1,10 +1,10 @@
-import { useContext } from "react"
+import { useContext, useMemo, type ReactNode } from "react"
 import TodoItem from "./TodoItem"
 import TodoContext from "../contexts/TodoContext"
 import FilterContext from "../contexts/FilterContext"
 import type { FilterContextType, TodoContextType, Todo } from "../types"
 
-export default function TodoList() {
+const TodoList = () => {
   const { todos } = useContext<TodoContextType>(TodoContext)
   const { filter } = useContext<FilterContextType>(FilterContext)
 
@@ -22,13 +22,17 @@ export default function TodoList() {
       break
   }
 
-  const filteredTodoItems = filteredTodos.map((t) => (
-    <TodoItem key={t.id} id={t.id} text={t.text} completed={t.completed} />
-  ))
+  const filteredTodoItems: ReactNode[] = useMemo(
+    () =>
+      filteredTodos.map((t) => (
+        <TodoItem key={t.id} id={t.id} text={t.text} completed={t.completed} />
+      )),
+    [filteredTodos]
+  )
 
-  const activeTodosCount = todos.reduce(
-    (acc, t) => (!t.completed ? acc + 1 : acc),
-    0
+  const activeTodosCount: number = useMemo(
+    () => todos.reduce((acc, t) => (!t.completed ? acc + 1 : acc), 0),
+    [todos]
   )
 
   return (
@@ -42,3 +46,5 @@ export default function TodoList() {
     </div>
   )
 }
+
+export default TodoList

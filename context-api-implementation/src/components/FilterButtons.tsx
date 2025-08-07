@@ -4,7 +4,7 @@ import type { Filter, FilterContextType } from "../types"
 
 import FilterContext from "../contexts/FilterContext"
 
-export default function FilterButtons() {
+const FilterButtons = () => {
   const { filter, setFilter } = useContext<FilterContextType>(FilterContext)
 
   function handleFilterChange(newFilter: Filter): void {
@@ -45,3 +45,5 @@ export default function FilterButtons() {
     </div>
   )
 }
+
+export default FilterButtons

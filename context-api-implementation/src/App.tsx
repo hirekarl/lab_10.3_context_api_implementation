@@ -9,7 +9,7 @@ import TodoInput from "./components/TodoInput"
 import FilterButtons from "./components/FilterButtons"
 import TodoList from "./components/TodoList"
 
-function App() {
+const App = () => {
   return (
     <div className="container-fluid">
       <div className="row">

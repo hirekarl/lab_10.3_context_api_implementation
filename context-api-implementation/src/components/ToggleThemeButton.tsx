@@ -8,7 +8,7 @@ import {
   THEME_TOGGLE_BUTTON_TEXT,
 } from "../constants"
 
-export default function ToggleThemeButton() {
+const ToggleThemeButton = () => {
   const { theme, toggleTheme } = useContext<ThemeContextType>(ThemeContext)
   return (
     <button
@@ -18,16 +18,20 @@ export default function ToggleThemeButton() {
           ? THEME_TOGGLE_BUTTON_COLOR.dark
           : THEME_TOGGLE_BUTTON_COLOR.light
       }`}
-      onClick={() => {if (toggleTheme) toggleTheme()}}>
+      onClick={() => {
+        if (toggleTheme) toggleTheme()
+      }}>
       <i
         className={
-          theme === "dark"
-            ? BOOTSTRAP_ICON.sun
-            : BOOTSTRAP_ICON.moon
+          theme === "dark" ? BOOTSTRAP_ICON.sun : BOOTSTRAP_ICON.moon
         }></i>
       &nbsp;
-      {theme === "dark" ? THEME_TOGGLE_BUTTON_TEXT.light : THEME_TOGGLE_BUTTON_TEXT.dark}
+      {theme === "dark"
+        ? THEME_TOGGLE_BUTTON_TEXT.light
+        : THEME_TOGGLE_BUTTON_TEXT.dark}
       &nbsp;Mode
     </button>
   )
 }
+
+export default ToggleThemeButton

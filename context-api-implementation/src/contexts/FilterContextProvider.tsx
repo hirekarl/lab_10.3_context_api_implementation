@@ -5,11 +5,7 @@ import FilterContext from "./FilterContext"
 
 import { getFilterFromLocalStorage, saveFilterToLocalStorage } from "../utils"
 
-export default function FilterContextProvider({
-  children,
-}: {
-  children: ReactNode
-}) {
+const FilterContextProvider = ({ children }: { children: ReactNode }) => {
   const [filter, setFilter] = useState<Filter>(
     getFilterFromLocalStorage() || "all"
   )
@@ -24,3 +20,5 @@ export default function FilterContextProvider({
     </FilterContext.Provider>
   )
 }
+
+export default FilterContextProvider

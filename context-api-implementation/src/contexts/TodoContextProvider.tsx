@@ -5,11 +5,7 @@ import { getTodosFromLocalStorage, saveTodosToLocalStorage } from "../utils"
 
 import TodoContext from "./TodoContext"
 
-export default function TodoContextProvider({
-  children,
-}: {
-  children: ReactNode
-}) {
+const TodoContextProvider = ({ children }: { children: ReactNode }) => {
   const [todos, setTodos] = useState<Todo[]>(getTodosFromLocalStorage() || [])
 
   useEffect(() => {
@@ -101,3 +97,5 @@ export default function TodoContextProvider({
     </TodoContext.Provider>
   )
 }
+
+export default TodoContextProvider

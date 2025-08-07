@@ -3,7 +3,7 @@ import TodoContext from "../contexts/TodoContext"
 import type { TodoContextType } from "../types"
 import { BOOTSTRAP_ICON } from "../constants"
 
-export default function TodoInput() {
+const TodoInput = () => {
   const { addTodo } = useContext<TodoContextType>(TodoContext)
 
   const [todoText, setTodoText] = useState<string>("")
@@ -48,3 +48,5 @@ export default function TodoInput() {
     </div>
   )
 }
+
+export default TodoInput
