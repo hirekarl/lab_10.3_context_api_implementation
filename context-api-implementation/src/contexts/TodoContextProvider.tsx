@@ -1,9 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react"
+import { useCallback, useEffect, useState, type ReactNode } from "react"
 import type { Todo, TodoID } from "../types"
 
 import { getTodosFromLocalStorage, saveTodosToLocalStorage } from "../utils"
