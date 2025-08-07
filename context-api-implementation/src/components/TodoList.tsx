@@ -37,7 +37,15 @@ const TodoList = () => {
 
   return (
     <div>
-      <ul className="list-group">{filteredTodoItems}</ul>
+      <ul className="list-group">
+        {filteredTodoItems.length > 0 ? (
+          filteredTodoItems
+        ) : (
+          <p className="text-center mt-3">
+            <em>No {filter !== "all" ? filter : null} todos yet.</em>
+          </p>
+        )}
+      </ul>
       <hr />
       <div>
         <strong>{activeTodosCount}</strong> item
