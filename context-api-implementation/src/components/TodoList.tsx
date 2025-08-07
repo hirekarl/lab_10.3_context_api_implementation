@@ -2,12 +2,13 @@ import { useContext } from "react"
 import TodoItem from "./TodoItem"
 import TodoContext from "../contexts/TodoContext"
 import FilterContext from "../contexts/FilterContext"
+import type { Todo } from "../types"
 
 export default function TodoList() {
   const { todos } = useContext(TodoContext)
   const { filter } = useContext(FilterContext)
 
-  let filteredTodos
+  let filteredTodos: Todo[]
   switch (true) {
     case filter === "active":
       filteredTodos = todos.filter((t) => !t.completed)
