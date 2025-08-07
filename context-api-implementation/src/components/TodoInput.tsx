@@ -38,7 +38,7 @@ export default function TodoInput() {
       </div>
       <div className="col-4">
         <button
-          className="btn btn-primary w-100"
+          className="btn btn-success w-100"
           disabled={buttonDisabled}
           onClick={handleAddTodo}>
           <i className="bi bi-plus"></i> Add Todo

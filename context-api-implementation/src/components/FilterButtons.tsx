@@ -16,7 +16,7 @@ export default function FilterButtons() {
   return (
     <div className="d-flex justify-content-around">
       <div
-        className="btn-group mb-3 w-100"
+        className="btn-group w-100"
         role="group"
         aria-label="Filter todos.">
         <button
