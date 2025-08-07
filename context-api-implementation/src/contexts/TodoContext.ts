@@ -3,11 +3,11 @@ import type { TodoContextType } from "../types"
 
 const TodoContext = createContext<TodoContextType>({
   todos: [],
-  addTodo: () => {},
-  toggleTodo: () => {},
-  deleteTodo: () => {},
-  editTodo: () => {},
-  clearCompleted: () => {},
+  addTodo: null,
+  toggleTodo: null,
+  deleteTodo: null,
+  editTodo: null,
+  clearCompleted: null,
 })
 
 export default TodoContext

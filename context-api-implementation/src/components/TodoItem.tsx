@@ -1,6 +1,7 @@
 import { useContext, useEffect, useId, useRef, useState } from "react"
 import type { Todo, TodoContextType } from "../types"
 import TodoContext from "../contexts/TodoContext"
+import { BOOTSTRAP_ICON } from "../constants"
 
 export default function TodoItem({ id, text, completed }: Todo) {
   const htmlId = useId()
@@ -27,14 +28,18 @@ export default function TodoItem({ id, text, completed }: Todo) {
         }}
         value={newText}
         onBlur={() => {
-          setEditing(false)
-          editTodo(id, newText)
+          if (editTodo) {
+            setEditing(false)
+            editTodo(id, newText)
+          }
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === "Tab") {
-            e.preventDefault()
-            setEditing(false)
-            editTodo(id, newText)
+            if (editTodo) {
+              e.preventDefault()
+              setEditing(false)
+              editTodo(id, newText)
+            }
           }
         }}
       />
@@ -47,7 +52,7 @@ export default function TodoItem({ id, text, completed }: Todo) {
           id={`list-item-checkbox-${htmlId}`}
           className="form-check-input"
           checked={completed}
-          onChange={() => toggleTodo(id)}
+          onChange={() => {if (toggleTodo) toggleTodo(id)}}
         />
         <label
           htmlFor={`list-item-checkbox-${htmlId}`}
@@ -59,12 +64,12 @@ export default function TodoItem({ id, text, completed }: Todo) {
         <button
           className="btn btn-sm btn-warning"
           onClick={() => setEditing(true)}>
-          <i className="bi bi-pencil-square"></i> Edit
+          <i className={BOOTSTRAP_ICON.pencil}></i> Edit
         </button>
         <button
           className="btn btn-sm btn-danger"
-          onClick={() => deleteTodo(id)}>
-          <i className="bi bi-trash"></i> Delete
+          onClick={() => {if (deleteTodo) deleteTodo(id)}}>
+          <i className={BOOTSTRAP_ICON.trash}></i> Delete
         </button>
       </div>
     </>

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import TodoContext from "../contexts/TodoContext"
 import type { TodoContextType } from "../types"
+import { BOOTSTRAP_ICON } from "../constants"
 
 export default function TodoInput() {
   const { addTodo } = useContext<TodoContextType>(TodoContext)
@@ -9,7 +10,7 @@ export default function TodoInput() {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true)
 
   function handleAddTodo(): void {
-    if (todoText !== "") {
+    if (todoText !== "" && addTodo) {
       addTodo(todoText)
       setTodoText("")
       setButtonDisabled(true)
@@ -41,7 +42,7 @@ export default function TodoInput() {
           className="btn btn-success w-100"
           disabled={buttonDisabled}
           onClick={handleAddTodo}>
-          <i className="bi bi-plus"></i> Add Todo
+          <i className={BOOTSTRAP_ICON.plus}></i>&nbsp;Add Todo
         </button>
       </div>
     </div>

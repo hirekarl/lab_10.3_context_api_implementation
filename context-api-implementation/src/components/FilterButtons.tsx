@@ -18,7 +18,7 @@ export default function FilterButtons() {
       <div className="btn-group w-100" role="group" aria-label="Filter todos.">
         <button
           type="button"
-          className={`btn btn-primary ${filter === "all" ? "active" : ""}`}
+          className={`btn btn-primary ${filter === "all" ? "active" : null}`}
           value="all"
           onClick={() => handleFilterChange("all")}>
           All
@@ -26,7 +26,7 @@ export default function FilterButtons() {
 
         <button
           type="button"
-          className={`btn btn-primary ${filter === "active" ? "active" : ""}`}
+          className={`btn btn-primary ${filter === "active" ? "active" : null}`}
           value="active"
           onClick={() => handleFilterChange("active")}>
           Active
@@ -35,7 +35,7 @@ export default function FilterButtons() {
         <button
           type="button"
           className={`btn btn-primary ${
-            filter === "completed" ? "active" : ""
+            filter === "completed" ? "active" : null
           }`}
           value="completed"
           onClick={() => handleFilterChange("completed")}>

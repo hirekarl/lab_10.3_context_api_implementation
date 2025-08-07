@@ -3,7 +3,7 @@ import type { ThemeContextType } from "../types"
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
-  toggleTheme: () => {},
+  toggleTheme: null,
 })
 
 export default ThemeContext

@@ -2,11 +2,11 @@ import { useContext } from "react"
 import TodoItem from "./TodoItem"
 import TodoContext from "../contexts/TodoContext"
 import FilterContext from "../contexts/FilterContext"
-import type { Todo } from "../types"
+import type { FilterContextType, TodoContextType, Todo } from "../types"
 
 export default function TodoList() {
-  const { todos } = useContext(TodoContext)
-  const { filter } = useContext(FilterContext)
+  const { todos } = useContext<TodoContextType>(TodoContext)
+  const { filter } = useContext<FilterContextType>(FilterContext)
 
   let filteredTodos: Todo[]
   switch (true) {

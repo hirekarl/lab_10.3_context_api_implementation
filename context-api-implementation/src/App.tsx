@@ -1,5 +1,3 @@
-import "./App.css"
-
 import ThemeContextProvider from "./contexts/ThemeContextProvider"
 import TodoContextProvider from "./contexts/TodoContextProvider"
 import FilterContextProvider from "./contexts/FilterContextProvider"
